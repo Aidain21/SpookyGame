@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -56,9 +57,8 @@ public class PlayerScript : MonoBehaviour
 		else
         {
 			hidden = false;
-			GetComponent<SpriteRenderer>().color = Color.white;
-
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+
 			GetComponent<SpriteRenderer>().color = Color.white;
 		}
 		if (Input.GetKey(KeyCode.T) && materials >= 3)
@@ -83,7 +83,5 @@ public class PlayerScript : MonoBehaviour
     {
 		materials += amt;
 		materialsText.text = "Materials: " + materials;
-
-    }
 	}
 }
