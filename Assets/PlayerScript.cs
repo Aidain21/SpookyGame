@@ -56,7 +56,7 @@ public class PlayerScript : MonoBehaviour
 	}
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Item")
+        if (collision.tag == "Items")
         {
 			Destroy(collision.gameObject);
 			UpdateItems(1);
