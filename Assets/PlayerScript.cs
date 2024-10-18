@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
 	public Sprite[] sprites;
 	public TMP_Text materialsText;
 	public int materials;
+	public GameObject trap;
 
 
 	void FixedUpdate()
@@ -51,6 +52,11 @@ public class PlayerScript : MonoBehaviour
 			hidden = false;
 			GetComponent<SpriteRenderer>().color = Color.white;
 		}
+		if (Input.GetKey(KeyCode.T) && materials >= 3)
+        {
+			UpdateItems(-3);
+			Instantiate(trap, transform.position + transform.forward, Quaternion.identity);
+        }
 
 
 	}
@@ -62,6 +68,7 @@ public class PlayerScript : MonoBehaviour
 			UpdateItems(1);
         }
     }
+	
 
     public void UpdateItems(int amt)
     {
