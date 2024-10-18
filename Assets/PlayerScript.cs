@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -9,9 +8,11 @@ public class PlayerScript : MonoBehaviour
 	public float curSpeed;
 	public bool hidden;
 	public Sprite[] sprites;
-	public TMP_Text materialsText;
-	public int materials;
 
+	void Start()
+	{
+
+	}
 
 	void FixedUpdate()
 	{
@@ -45,28 +46,16 @@ public class PlayerScript : MonoBehaviour
         {
 			hidden = true;
 			GetComponent<SpriteRenderer>().color = Color.blue;
+
+			GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+
         }
 		else
         {
 			hidden = false;
 			GetComponent<SpriteRenderer>().color = Color.white;
-		}
 
-
-	}
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Items")
-        {
-			Destroy(collision.gameObject);
-			UpdateItems(1);
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         }
-    }
-
-    public void UpdateItems(int amt)
-    {
-		materials += amt;
-		materialsText.text = "Materials: " + materials;
-
-    }
+	}
 }
