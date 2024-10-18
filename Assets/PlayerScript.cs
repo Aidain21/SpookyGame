@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -13,6 +12,10 @@ public class PlayerScript : MonoBehaviour
 	public int materials;
 	public GameObject trap;
 
+	void Start()
+	{
+
+	}
 
 	void FixedUpdate()
 	{
@@ -46,10 +49,16 @@ public class PlayerScript : MonoBehaviour
         {
 			hidden = true;
 			GetComponent<SpriteRenderer>().color = Color.blue;
+
+			GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+
         }
 		else
         {
 			hidden = false;
+			GetComponent<SpriteRenderer>().color = Color.white;
+
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
 			GetComponent<SpriteRenderer>().color = Color.white;
 		}
 		if (Input.GetKey(KeyCode.T) && materials >= 3)
@@ -76,4 +85,5 @@ public class PlayerScript : MonoBehaviour
 		materialsText.text = "Materials: " + materials;
 
     }
+	}
 }
